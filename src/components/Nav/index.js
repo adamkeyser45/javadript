@@ -12,8 +12,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+// import Container from '@material-ui/core/Container';
+// import Box from '@material-ui/core/Box';
 
 import About from '../pages/About'
 import Pricing from '../pages/Pricing';
