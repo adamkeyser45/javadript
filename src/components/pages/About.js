@@ -15,11 +15,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-
-import Pricing from './Pricing';
-import SignInSide from './SignInSide';
-import SignUp from './SignUp';
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -82,48 +77,10 @@ const useStyles = makeStyles((theme) => ({
 export default function About() {
   const classes = useStyles();
 
-  const [currentPage, setCurrentPage] = useState('About');
-
-  const renderPage = () => {
-      switch (currentPage) {
-          case 'Pricing':
-            return <Pricing />;
-          case 'SignUp':
-            return <SignUp />;
-          case 'SignIn':
-              return <SignInSide />
-          default:
-            return <About />;
-      }
-  };
-
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            javaDript
-          </Typography>
-          <nav>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('About') }}>
-              About
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('Pricing') }}>
-              Pricing
-            </Link>
-          </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
-            Login
-          </Button>
-          <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignUp') }}> 
-            Sign Up
-          </Button>
-          <div>
-            {renderPage()}
-          </div> 
-        </Toolbar>
-      </AppBar>
+
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>

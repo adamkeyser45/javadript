@@ -4,13 +4,15 @@ import './App.css';
 // import SignInSide from './components/pages/SignInSide';
 // import SignUp from './components/pages/SignUp';
 import About from './components/pages/About';
+import Nav from './components/Nav'
 
 function App() {
   return (
     <div>
       
       {/* <Pricing></Pricing> */}
-      <About />
+      <Nav />
+      {/* <About /> */}
       {/* <SignInSide></SignInSide> */}
       {/* <SignUp></SignUp> */}
 
