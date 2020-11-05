@@ -1,9 +1,8 @@
 import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 import '../../assets/style.css';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -77,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const tiers = [
+const products = [
   {
     title: 'Bootcamp',
     price: '20',
@@ -117,7 +116,9 @@ const tiers = [
 
 export default function Pricing() {
   const classes = useStyles();
-
+  function handleToken(token, addresses) {
+    console.log({ token, addresses })
+  }
   return (
 
     <React.Fragment>
@@ -135,22 +136,22 @@ export default function Pricing() {
         {/* End hero unit */}
         <Container maxWidth="md" component="main">
           <Grid container spacing={5} alignItems="flex-end">
-            {tiers.map((tier) => (
+            {products.map((product) => (
               // Enterprise card is full width at sm breakpoint
-              <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+              <Grid item key={product.title} xs={12} sm={product.title === 'Enterprise' ? 12 : 6} md={4}>
                 <Card className="card">
                   <CardHeader
-                    title={tier.title}
-                    subheader={tier.subheader}
+                    title={product.title}
+                    subheader={product.subheader}
                     titleTypographyProps={{ align: 'center' }}
                     subheaderTypographyProps={{ align: 'center' }}
-                    action={tier.title === 'Pro' ? <StarIcon /> : null}
+                    action={product.title === 'Pro' ? <StarIcon /> : null}
                     className={"cardHeader"}
                   />
                   <CardContent>
                     <div className={classes.cardPricing}>
                       <Typography component="h2" variant="h3" className="googleFont" color="textPrimary">
-                        ${tier.price}
+                        ${product.price}
                       </Typography>
                       <Typography variant="h6" color="textSecondary">
                         /mo
@@ -160,11 +161,11 @@ export default function Pricing() {
                       component="img"
                       alt="Coffee image"
                       height="140"
-                      image={ image1 }
+                      image={image1}
                       title="coffee image"
                     />
                     <ul>
-                      {tier.description.map((line) => (
+                      {product.description.map((line) => (
                         <Typography component="li" variant="subtitle1" align="center" key={line}>
                           {line}
                         </Typography>
@@ -172,14 +173,24 @@ export default function Pricing() {
                     </ul>
                   </CardContent>
                   <CardActions>
-                    <Button fullWidth variant={tier.buttonVariant} color="primary">
-                      {tier.buttonText}
+                    <Button fullWidth variant={product.buttonVariant} color="primary">
+                      {product.buttonText}
                     </Button>
                   </CardActions>
                 </Card>
+                <StripeCheckout
+                  stripeKey="pk_test_51HkGuBK9umgCP47fXIZ8eEutibdMRaXXWPVkZJtk54CtM98DQ327WsyYiCEDsy1BxYgMfw7lj3bP8mBriEPUctrZ00Ri54t2gF"
+                  token={handleToken}
+                  billingAddress
+                  shippingAddress
+                  amount={product.price * 100}
+                  name={product.title}
+                />
               </Grid>
             ))}
+
           </Grid>
+
         </Container>
 
         {/* Footer */}
