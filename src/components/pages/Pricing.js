@@ -1,5 +1,6 @@
 import React from 'react';
-// import AppBar from '@material-ui/core/AppBar';
+import '../../assets/style.css';
+import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,12 +16,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        JavaDript
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,15 +31,18 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+
   '@global': {
     ul: {
       margin: 0,
       padding: 0,
       listStyle: 'none',
+
     },
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+    
   },
   toolbar: {
     flexWrap: 'wrap',
@@ -50,10 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
-  },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+
   },
   cardPricing: {
     display: 'flex',
@@ -71,13 +73,17 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
+ 
 }));
 
 const tiers = [
   {
     title: 'Bootcamp',
     price: '20',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    description: ['2 Bags Included',
+      'Whole Beans',
+      'Heavily Caffeinated',
+      'Light to Medium Roasts'],
     buttonText: 'Order Now!',
     buttonVariant: 'outlined',
   },
@@ -86,10 +92,10 @@ const tiers = [
     subheader: 'Most popular',
     price: '40',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
+      '3 Bags & Funny Mug Included',
+      'Freshly Ground',
+      'Super Heavily Caffeinated',
+      'Medium to Dark Roasts',
     ],
     buttonText: 'Order Now!',
     buttonVariant: 'contained',
@@ -98,10 +104,10 @@ const tiers = [
     title: 'Senior Dev',
     price: '50',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      '4 Bags & Bourbon Included',
+      'Instant Mix (quick access)',
+      'Pure Caffeine',
+      '...Bourbon',
     ],
     buttonText: 'Order Now!',
     buttonVariant: 'outlined',
@@ -113,14 +119,15 @@ export default function Pricing() {
 
   return (
     <React.Fragment>
+      <div className="wrapper">
       <CssBaseline />
       {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          javaDript.pricing()
+      <Container maxWidth="sm" component="main" background="main" className={classes.heroContent}>
+        <Typography component="h1" variant="h2" align="center" className="googleFont" gutterBottom>
+         pricing ()
         </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" component="p">
-          We have crafted three types of subscription boxes to cater to your specif coffee needs.
+        <Typography variant="h5" align="center" className="googleFont2" component="p">
+          We have crafted three subscription boxes to cater to your specific coffee needs.
         </Typography>
       </Container>
       {/* End hero unit */}
@@ -129,18 +136,18 @@ export default function Pricing() {
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
-              <Card>
+              <Card className="card">
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
+                  titleTypographyProps={{ align: 'center'}}
                   subheaderTypographyProps={{ align: 'center' }}
                   action={tier.title === 'Pro' ? <StarIcon /> : null}
-                  className={classes.cardHeader}
+                  className={"cardHeader"}
                 />
                 <CardContent>
                   <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h3" color="textPrimary">
+                    <Typography component="h2" variant="h3" className="googleFont" color="textPrimary">
                       ${tier.price}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
@@ -167,11 +174,12 @@ export default function Pricing() {
       </Container>
 
       {/* Footer */}
-        <Container maxWidth="md" component="footer" className={classes.footer}>
-          <Box mt={5}>
-            <Copyright />
-          </Box>
-        </Container>
+      <Container maxWidth="md" component="footer" className={"footer"}>
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
+      </div>
       {/* End footer */}
     </React.Fragment>
   );

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@200;500&display=swap');
+:root {
+    --brown: #493A1C;
+    --coral: #FF806C;
+    --teal: #009790;
+    --lightblue: #BDF6E9;
+    --green: #78C29E;
+  }
+.wrapper {
+    width: 100%;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 30%, rgba(189,246,233,1) 100%);
+}
+.cardHeader {
+    background-color: var(--coral);
+    font-family: 'Trispace', sans-serif;
+    box-shadow: var(--teal) 0px -2px 10px;
+}
+.footer {
+    margin-top: 40px;
+    border-top: 1px solid var(--brown);
+    padding: 30px;
+
+}
+.googleFont {
+    font-family: 'Trispace', sans-serif;
+    font-weight: 500;
+    color: var(--brown);
+}
+.googleFont2 {
+    font-family: 'Trispace', sans-serif;
+    font-weight: 200;
+    color: var(--brown);
+    opacity: 50%;
+    
+}
+.card {
+    box-shadow: 0px 5px 10px var(--teal);
+}
