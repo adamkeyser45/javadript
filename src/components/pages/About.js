@@ -1,12 +1,13 @@
 import React from 'react';
 // import AppBar from '@material-ui/core/AppBar';
-// import Button from '@material-ui/core/Button';
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardHeader from '@material-ui/core/CardHeader';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 // import StarIcon from '@material-ui/icons/StarBorder';
 // import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +15,8 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+
+import cafeImg from '../../assets/cafe.png';
 
 function Copyright() {
   return (
@@ -79,32 +82,62 @@ export default function About() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
+      <div className="wrapper">
+        <CssBaseline />
 
-      {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          javaDript.about()
-        </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" component="p">
-          javaDript was started by three entrepid Code Boot Camp students, who had a need
-          for keeping themselves awake when they were completing their grueling Module Lessons.
+        {/* Hero unit */}
+        <Container maxWidth="md" component="main" className={classes.heroContent}>
+          
+          <Typography component="h1" variant="h2" align="center" className="googleFont" gutterBottom>
+            javaDript.about()
+          </Typography>
 
-          They came up with a set of of curated coffee bean blends that help keep coders awake
-          and focused while doing what they do best!
-        </Typography>
-      </Container>
-      {/* End hero unit */}
+          <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={3}>
 
-      {/* Footer */}
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-      {/* End footer */}
+          <Grid item xs={6}>
+          <Typography variant="h5" align="left" color="textSecondary" component="p" className="googleFont">
+              javaDript was started by three entrepid Code Boot Camp students, who had a need
+              for keeping themselves awake when they were completing their grueling Module Lessons.
+          </Typography>
+          <br />
+          <Typography variant="h5" align="left" color="textSecondary" component="p" className="googleFont">
+              They came up with a set of of curated coffee bean blends that help keep coders awake
+              and focused while doing what they do best!
+          </Typography>
+          <br />
+          <Typography variant="h5" align="left" color="textSecondary" component="p" className="googleFont">
+            javaDript is a monthly subscription box service where you can have these curated coffee's shipped right
+            to your door!
+            </Typography>
+          </Grid>
+          <br />
+          <Grid item xs={6}>
+          <Card className={classes.root}>
+            <CardContent>
+              <CardMedia
+                component="img"
+                alt="A laptop and coffe mug"
+                image={ cafeImg }
+                title="Coffee Cafe"
+              />
+            </CardContent>
 
+          </Card>
+          </Grid>
+          </Grid>
 
+        </Container>
+        {/* End hero unit */}
+
+        {/* Footer */}
+        <Container maxWidth="md" component="footer" className={classes.footer}>
+          <Box mt={5}>
+            <Copyright />
+          </Box>
+        </Container>
+        {/* End footer */}
+
+      </div>
     </React.Fragment>
   );
 }
