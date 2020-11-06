@@ -21,9 +21,18 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use(
+    cookieSession({
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      keys: [keys.cookieKey]
+    })
+  );
+
 // passport initialize
 app.use(passport.initialize());
 app.use(passport.session());
+
+require('./routes/authRoutes')(app);
 
 // Serve up static assets
 // app.use('/images', express.static(path.join(__dirname, '../client/images')));
