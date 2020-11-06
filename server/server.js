@@ -2,7 +2,7 @@ const express = require('express');
 // const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 const path = require('path');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 const passport = require('passport');
 
 // const { typeDefs, resolvers } = require('./schemas');
@@ -22,12 +22,12 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(
-    cookieSession({
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-      keys: [keys.cookieKey]
-    })
-  );
+// app.use(
+//     cookieSession({
+//       maxAge: 30 * 24 * 60 * 60 * 1000,
+//       keys: [keys.cookieKey]
+//     })
+//   );
 
 // passport initialize
 app.use(passport.initialize());
