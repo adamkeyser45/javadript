@@ -1,7 +1,8 @@
 const express = require('express');
 // const { ApolloServer } = require('apollo-server-express');
+const mongoose = require('mongoose');
 const path = require('path');
-
+const cookieSession = require('cookie-session');
 const passport = require('passport');
 
 // const { typeDefs, resolvers } = require('./schemas');
