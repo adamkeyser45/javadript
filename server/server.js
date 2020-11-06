@@ -2,6 +2,8 @@ const express = require('express');
 // const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
+const passport = require('passport');
+
 // const { typeDefs, resolvers } = require('./schemas');
 // const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
@@ -18,6 +20,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// passport initialize
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve up static assets
 // app.use('/images', express.static(path.join(__dirname, '../client/images')));
