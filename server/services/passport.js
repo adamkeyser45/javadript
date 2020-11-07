@@ -45,8 +45,8 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      clientID: keys.Facebook_App_Id,
-      clientSecret: keys.Facebook_App_Secret,
+      clientID: keys.facebookClientId,
+      clientSecret: keys.facebookClientSecret,
       callbackURL: "http://localhost:3001/auth/facebook/callback"
     },
     (accessToken, refreshToken, profile, done) => {
