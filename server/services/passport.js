@@ -1,6 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model("users");
@@ -15,6 +16,7 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+// Google strategy
 passport.use(
   new GoogleStrategy(
     {
@@ -42,6 +44,7 @@ passport.use(
   )
 );
 
+// Facebook strategy
 passport.use(
   new FacebookStrategy(
     {
@@ -67,5 +70,33 @@ passport.use(
     }
   )
 );
+
+// Github strategy
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: keys.githubClientId,
+      clientSecret: keys.githubClientSecret,
+      callbackURL: "http://localhost:3001/auth/github/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log("access token", accessToken);
+      console.log("refresh token", refreshToken);
+      console.log("profile:", profile);
+      User.findOne({ githubId: profile.id }).then((existingUser) => {
+        if (existingUser) {
+          // we already have a record with the given profile ID
+          done(null, existingUser);
+        } else {
+          // we don't have a user record with this ID, make a new record
+          new User({ githubId: profile.id })
+            .save()
+            .then((user) => done(null, user));
+        }
+      });
+    }
+  )
+);
+
 
 
