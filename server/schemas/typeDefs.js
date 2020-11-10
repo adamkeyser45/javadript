@@ -6,15 +6,6 @@ const typeDefs = gql`
     githubLoginUrl: String!
   }
 
-  type AuthPayload {
-    githubToken: String!
-    user: User!
-  }
-  
-  type Mutation {
-    ...
-    authorizeWithGithub(code: String!): AuthPayload!
-  }
   `
 
   
