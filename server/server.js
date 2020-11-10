@@ -7,7 +7,6 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 require("./models/User");
 require("./services/passport");
-require('dotenv').config()
 
 
 const { typeDefs, resolvers } = require("./schemas");
