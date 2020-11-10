@@ -36,20 +36,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/login",
-//     failureFlash: true,
-//   })
-// );
-
-// app.post("/graphql", (req, res) => {
-//   graphql(schema, req.body, { user: req.user }).then((data) => {
-//     res.send(JSON.stringify(data));
-//   });
-// });
 
 require("./routes/authRoutes")(app);
 
@@ -71,8 +57,3 @@ db.once("open", () => {
   });
 });
 
-// db.once('open', () => {
-//     app.listen(PORT, () => {
-//       console.log(`API server running on port ${PORT}!`);
-//     });
-//   });
