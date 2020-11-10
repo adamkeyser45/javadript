@@ -1,11 +1,11 @@
 const { User } = require("../models");
-require('dotenv').config()
+const keys = require("../config/keys");
 
 const resolvers = {
     Query: {
         githubLoginUrl: () =>
           `https://github.com/login/oauth/authorize?client_id=${
-            process.env.GITHUB_CLIENT_ID
+            keys.githubClientId
           }&scope=user`,
       }
 };
