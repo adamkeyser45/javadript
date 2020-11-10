@@ -108,7 +108,7 @@ export default function SignInSide() {
             >
               Sign In
             </Button>
-            <a href="http://localhost:3001/auth/google">
+            <a href="http://localhost:3001/auth/github">
             <Button
               type="button"
               fullWidth
@@ -116,7 +116,7 @@ export default function SignInSide() {
               color="secondary"
               className={classes.submit}
             >
-              Sign In with Google
+              Sign In with Github
             </Button>
             </a>
             <Grid container>

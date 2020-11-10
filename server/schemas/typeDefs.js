@@ -1,7 +1,14 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  
+  type Query {
+    githubLoginUrl: String!
+  }
 
-type Checkout {
-    session: ID
-  }`
+  `
+
+  
+
+
+module.exports = typeDefs;
