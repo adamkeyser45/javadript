@@ -1,10 +1,7 @@
 import React from 'react';
 // import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -15,7 +12,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-
+import '../../assets/style.css';
 import cafeImg from '../../assets/cafe.png';
 
 function Copyright() {
@@ -86,15 +83,15 @@ export default function About() {
         <CssBaseline />
 
         {/* Hero unit */}
-        <Container maxWidth="md" component="main" className={classes.heroContent}>
+        <Container maxWidth="lg" component="main"  className="padding">
           
-          <Typography component="h1" variant="h2" align="center" className="googleFont" gutterBottom>
+          <Typography component="h1" variant="h4" align="center" className="googleFont" gutterBottom>
             javaDript.about()
           </Typography>
 
-          <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={3}>
+          <Grid container spacing={4} alignItems="flex-end" className="aboutGrid">
 
-          <Grid item xs={6}>
+          <Grid item xs={12} md={7}>
           <Typography variant="h5" align="left" color="textSecondary" component="p" className="googleFont">
               javaDript was started by three entrepid Code Boot Camp students, who had a need
               for keeping themselves awake when they were completing their grueling Module Lessons.
@@ -111,7 +108,7 @@ export default function About() {
             </Typography>
           </Grid>
           <br />
-          <Grid item xs={6}>
+          <Grid item xs={10} md={4}>
           <Card className={classes.root}>
             <CardContent>
               <CardMedia

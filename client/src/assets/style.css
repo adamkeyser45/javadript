@@ -8,7 +8,9 @@
   }
 .wrapper {
     width: 100%;
-    background: linear-gradient(20deg, rgb(255, 255, 255) 30%, rgb(48, 162, 228) 150%);
+    height: 100%;
+    padding-top: 40px;
+    background: linear-gradient(15deg, rgb(255, 255, 255) 30%, rgb(48, 162, 228) 150%);
 }
 .cardHeader {
     background-color: var(--coral);
@@ -35,4 +37,12 @@
 .card {
     box-shadow: -3px 5px 10px var(--teal) !important;
     
+}
+.homelink {
+    text-decoration: none;
+    color: #493A1C;
+    font-size: 1.2em;
+}
+.aboutGrid {
+    padding: 40px 25px 0px 25px;
 }
