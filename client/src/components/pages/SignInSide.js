@@ -88,8 +88,8 @@ export default function SignInSide() {
             <Grid container>
       
               <Grid item>
-                <Link href="www.github.com" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="https://www.github.com" variant="body2" align='center'>
+                  {"Don't have an account? Sign Up on GitHub!"}
                 </Link>
               </Grid>
             </Grid>
