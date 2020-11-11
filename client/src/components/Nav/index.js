@@ -89,7 +89,7 @@ export default function Nav() {
         <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
             <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-              javaDript
+             <a href= "/" className="homelink">javaDript</a>
             </Typography>
             <nav>
               <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('About') }}>
