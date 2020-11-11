@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 function Copyright() {
   return (
@@ -67,24 +68,22 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <GitHubIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           
-           
-            <a href="http://localhost:3001/auth/github">
             <Button
               type="button"
               fullWidth
               variant="contained"
               color="secondary"
               className={classes.submit}
+              href="http://localhost:3001/auth/github"
             >
               Sign In with Github
             </Button>
-            </a>
 
             <Typography align="center" variant="subtitle2">
               <Link href="https://www.github.com" >
