@@ -14,11 +14,12 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container';
 // import Box from '@material-ui/core/Box';
+import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
 import About from '../pages/About'
 import Pricing from '../pages/Pricing';
 import SignInSide from '../pages/SignInSide';
-import SignUp from '../pages/SignUp';
+// import SignUp from '../pages/SignUp';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -87,7 +88,7 @@ export default function Nav() {
         <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
             <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-             <a href= "/" className="homelink">javaDript</a>
+             <LocalCafeIcon /> <a href= "/" className="homelink">javaDript </a>
             </Typography>
             <nav>
               <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('About') }}>
