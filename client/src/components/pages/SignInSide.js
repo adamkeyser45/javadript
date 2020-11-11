@@ -85,14 +85,13 @@ export default function SignInSide() {
               Sign In with Github
             </Button>
             </a>
-            <Grid container>
-      
-              <Grid item>
-                <Link href="https://www.github.com" variant="body2" align='center'>
-                  {"Don't have an account? Sign Up on GitHub!"}
-                </Link>
-              </Grid>
-            </Grid>
+
+            <Typography align="center" variant="subtitle2">
+              <Link href="https://www.github.com" >
+                {"Don't have an account? Sign Up on GitHub!"}
+              </Link>
+            </Typography>
+
             <Box mt={5}>
               <Copyright />
             </Box>
