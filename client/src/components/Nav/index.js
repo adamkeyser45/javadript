@@ -74,8 +74,6 @@ export default function Nav() {
         switch (currentPage) {
             case 'Pricing':
               return <Pricing />;
-            case 'SignUp':
-              return <SignUp />;
             case 'SignIn':
                 return <SignInSide />
             default:
@@ -101,9 +99,6 @@ export default function Nav() {
             </nav>
             <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
               Login
-            </Button>
-            <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignUp') }}> 
-              Sign Up
             </Button>
           </Toolbar>
         </AppBar>
