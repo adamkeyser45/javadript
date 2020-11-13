@@ -1,6 +1,6 @@
 import React from 'react';
 // import AppBar from '@material-ui/core/AppBar';
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 // import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent';
@@ -9,6 +9,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 // import Grid from '@material-ui/core/Grid';
 // import StarIcon from '@material-ui/icons/StarBorder';
 // import Toolbar from '@material-ui/core/Toolbar';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
@@ -87,13 +93,32 @@ export default function Pricing() {
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
             Take a look of REAL reviews from coders who enjoy our products!
-
         </Typography>
       </Container>
       {/* End hero unit */}
+
       <Container maxWidth="md" component="main">
+        
+        <TextField
+            id="outlined-full-width"
+            label="Your Review"
+            style={{ margin: 8 }}
+            placeholder="What did you think about our coffee?"
+            helperText="*Required"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+            shrink: true,
+            }}
+            variant="outlined"
+        />
+
+        <Button variant="contained" color="primary" style={{ margin: 8 }}>
+            Leave a Review
+        </Button>
 
       </Container>
+
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Box mt={5}>
