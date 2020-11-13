@@ -81,15 +81,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Pricing() {
   const classes = useStyles();
-  const [formState, setFormState] = useState({ review: '' });
-  const { review } = formState;
+  const [reviewText, setText] = useState('');
 
   function handleChange(e) {
-    setFormState({...formState, review: e.target.value })
-  }
+    setText(e.target.value);
+  };
 
-  const submitReview = (event) => {
-    console.log(formState);
+  function submitReview(e) {
+    e.preventDefault();
+    console.log(reviewText);
+
+    setText('');
   };
 
   return (
@@ -183,7 +185,7 @@ export default function Pricing() {
                 shrink: true,
                 }}
                 variant="outlined"
-                defaultValue={review}
+                value={reviewText}
                 onChange={handleChange}
             />
             <Button variant="contained" color="primary" style={{ margin: 8 }} onClick={submitReview}>
