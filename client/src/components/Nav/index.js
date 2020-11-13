@@ -19,6 +19,7 @@ import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import About from '../pages/About'
 import Pricing from '../pages/Pricing';
 import SignInSide from '../pages/SignInSide';
+import Reviews from '../pages/Reviews';
 // import SignUp from '../pages/SignUp';
 
 const useStyles = makeStyles((theme) => ({
@@ -77,6 +78,8 @@ export default function Nav() {
               return <Pricing />;
             case 'SignIn':
                 return <SignInSide />
+            case 'Reviews':
+              return <Reviews />
             default:
               return <About />;
         }
@@ -96,6 +99,9 @@ export default function Nav() {
               </Link>
               <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('Pricing') }}>
                 Pricing
+              </Link>
+              <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('Reviews') }}>
+                Reviews
               </Link>
             </nav>
             <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
