@@ -1,19 +1,18 @@
 import React from 'react';
-// import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardHeader from '@material-ui/core/CardHeader';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import Grid from '@material-ui/core/Grid';
-// import StarIcon from '@material-ui/icons/StarBorder';
-// import Toolbar from '@material-ui/core/Toolbar';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+import Paper from '@material-ui/core/Paper';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -84,48 +83,82 @@ export default function Pricing() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
+        <CssBaseline />
 
-      {/* Hero unit */}
-      <Container maxWidth="md" component="main" className={classes.heroContent}>
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          reviews ()
-        </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" component="p">
-            Take a look of REAL reviews from coders who enjoy our products!
-        </Typography>
-      </Container>
-      {/* End hero unit */}
+        {/* Hero unit */}
+        <Container maxWidth="md" component="main" className={classes.heroContent}>
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            reviews ()
+            </Typography>
+            <Typography variant="h5" align="center" color="textSecondary" component="p">
+                Take a look of REAL reviews from coders who enjoy our products!
+            </Typography>
+        </Container>
+        {/* End hero unit */}
 
-      <Container maxWidth="md" component="main">
-        
-        <TextField
-            id="outlined-full-width"
-            label="Your Review"
-            style={{ margin: 8 }}
-            placeholder="What did you think about our coffee?"
-            helperText="*Required"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-            shrink: true,
-            }}
-            variant="outlined"
-        />
+        {/*Displayed Reviews*/}
+        <Container maxWidth="md" component="main" alignItems="center">
+            <Paper 
+                elevation={5}
+                style={{margin: 8}}
+            >
+            <List>
+                <ListItem>
+                  <ListItemText>
+                      <Typography variant="h5"  align="center">
+                          <LocalCafeIcon /> This is the greatest subscription box service of all time!
+                      </Typography>
+                      <Typography variant="h6"  align="center">
+                          -Anonymous
+                      </Typography>
+                  </ListItemText>
+                </ListItem>,
+                <ListItem>
+                  <ListItemText>
+                      <Typography variant="h5"  align="center">
+                          <LocalCafeIcon /> This is the greatest subscription box service of all time!
+                      </Typography>
+                      <Typography variant="h6"  align="center">
+                          -Anonymous
+                      </Typography>
+                  </ListItemText>
+                </ListItem>
+            </List>  
+                
+                
+            </Paper>            
+        </Container>
+        {/*End Displayed Reviews*/}
 
-        <Button variant="contained" color="primary" style={{ margin: 8 }}>
-            Leave a Review
-        </Button>
+        <br></br>
+        {/* Review Form */}
+        <Container maxWidth="md" component="main" alignItems="center">
+            <TextField
+                id="outlined-full-width"
+                label="Your Review"
+                style={{ margin: 8 }}
+                placeholder="What did you think about our coffee?"
+                helperText="*Required"
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                shrink: true,
+                }}
+                variant="outlined"
+            />
+            <Button variant="contained" color="primary" style={{ margin: 8 }}>
+                Leave a Review
+            </Button>
+        </Container>
+        {/* End Review Form */}
 
-      </Container>
-
-      {/* Footer */}
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-      {/* End footer */}
+        {/* Footer */}
+        <Container maxWidth="md" component="footer" className={classes.footer}>
+            <Box mt={5}>
+            <Copyright />
+            </Box>
+        </Container>
+        {/* End footer */}
     </React.Fragment>
   );
 }
