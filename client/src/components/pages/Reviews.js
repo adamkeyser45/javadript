@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../assets/style.css';
 import Button from '@material-ui/core/Button';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,8 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
@@ -19,6 +19,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+
 
 function Copyright() {
   return (
@@ -83,15 +84,16 @@ export default function Pricing() {
 
   return (
     <React.Fragment>
+        <div className="wrapper">
         <CssBaseline />
 
         {/* Hero unit */}
         <Container maxWidth="md" component="main" className={classes.heroContent}>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography component="h1" variant="h2" align="center" className="googleFont" gutterBottom>
             reviews ()
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" component="p">
-                Take a look of REAL reviews from coders who enjoy our products!
+            <Typography variant="h5" align="center" className="googleFont2" component="p">
+                Take a look at REAL reviews from coders who enjoy our products!
             </Typography>
         </Container>
         {/* End hero unit */}
@@ -104,24 +106,50 @@ export default function Pricing() {
             >
             <List>
                 <ListItem>
-                  <ListItemText>
-                      <Typography variant="h5"  align="center">
-                          <LocalCafeIcon /> This is the greatest subscription box service of all time!
-                      </Typography>
-                      <Typography variant="h6"  align="center">
-                          -Anonymous
-                      </Typography>
-                  </ListItemText>
-                </ListItem>,
+                    <ListItemAvatar>
+                        <Avatar>
+                            <LocalCafeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText>
+                        <Typography variant="h5"  align="left">
+                             This is the greatest subscription box service of all time!
+                        </Typography>
+                        <Typography variant="h6"  align="right">
+                            -Anonymous
+                        </Typography>
+                    </ListItemText>
+                </ListItem>
                 <ListItem>
-                  <ListItemText>
-                      <Typography variant="h5"  align="center">
-                          <LocalCafeIcon /> This is the greatest subscription box service of all time!
-                      </Typography>
-                      <Typography variant="h6"  align="center">
-                          -Anonymous
-                      </Typography>
-                  </ListItemText>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <LocalCafeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText>
+                        <Typography variant="h5"  align="left">
+                             This is another review of the greatest subscription box service of all time!
+                        </Typography>
+                        <Typography variant="h6"  align="right">
+                            -Anonymous
+                        </Typography>
+                    </ListItemText>
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <LocalCafeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText>
+                        <Typography variant="h5"  align="left">
+                             This is an extremely LONG review! I want everyone to know just how amazing this product is!
+                             I also want to test to see what this looks like with long text!
+                        </Typography>
+                        <Typography variant="h6"  align="right">
+                            -Anonymous
+                        </Typography>
+                    </ListItemText>
                 </ListItem>
             </List>  
                 
@@ -135,7 +163,7 @@ export default function Pricing() {
         <Container maxWidth="md" component="main" alignItems="center">
             <TextField
                 id="outlined-full-width"
-                label="Your Review"
+                label="Leave Your Own Review"
                 style={{ margin: 8 }}
                 placeholder="What did you think about our coffee?"
                 helperText="*Required"
@@ -153,12 +181,13 @@ export default function Pricing() {
         {/* End Review Form */}
 
         {/* Footer */}
-        <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Container maxWidth="md" component="footer" className={"footer"}>
             <Box mt={5}>
             <Copyright />
             </Box>
         </Container>
         {/* End footer */}
+        </div>
     </React.Fragment>
   );
 }
