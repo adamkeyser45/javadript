@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../assets/style.css';
 import Button from '@material-ui/core/Button';
 
@@ -81,6 +81,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Pricing() {
   const classes = useStyles();
+  const [formState, setFormState] = useState({ review: '' });
+  const { review } = formState;
+
+  function handleChange(e) {
+    setFormState({...formState, review: e.target.value })
+  }
+
+  const submitReview = (event) => {
+    console.log(formState);
+  };
 
   return (
     <React.Fragment>
@@ -173,8 +183,10 @@ export default function Pricing() {
                 shrink: true,
                 }}
                 variant="outlined"
+                defaultValue={review}
+                onChange={handleChange}
             />
-            <Button variant="contained" color="primary" style={{ margin: 8 }}>
+            <Button variant="contained" color="primary" style={{ margin: 8 }} onClick={submitReview}>
                 Leave a Review
             </Button>
         </Container>
