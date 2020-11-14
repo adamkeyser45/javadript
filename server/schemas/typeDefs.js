@@ -4,7 +4,6 @@ const typeDefs = gql`
   
   type Query {
     githubLoginUrl: String!
-    reviews: [Review]
     users: [User]
   }
 
@@ -17,6 +16,8 @@ const typeDefs = gql`
   type User {
     _id: ID
     githubId: String
+    displayName: String
+    reviews: [Review]
   }
 
 `

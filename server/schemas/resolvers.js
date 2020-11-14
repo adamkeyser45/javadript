@@ -7,9 +7,6 @@ const resolvers = {
           `https://github.com/login/oauth/authorize?client_id=${
             keys.githubClientId
           }&scope=user`,
-        reviews: async () => {
-          return Review.find()
-        },
         users: async () => {
           return User.find()
         }

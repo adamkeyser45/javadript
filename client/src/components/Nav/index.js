@@ -68,6 +68,12 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function Nav() {
+
+  // const loggedin = false
+  // if (githubId) {
+  // loggedin = true
+  //}
+
     const classes = useStyles();
   
     const [currentPage, setCurrentPage] = useState('About');
