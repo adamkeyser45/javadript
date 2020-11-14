@@ -9,6 +9,9 @@ const resolvers = {
           }&scope=user`,
         reviews: async () => {
           return Review.find()
+        },
+        users: async () => {
+          return User.find()
         }
       }
 };
