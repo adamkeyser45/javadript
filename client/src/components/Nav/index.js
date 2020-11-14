@@ -68,6 +68,19 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function Nav() {
+
+  // const loggedin = false
+  // 
+  // checkLogin {
+  // get loggedAccessToken
+  // if (loggedAccessToken = null) {
+  //  loggedin = false
+  // } else {
+  //   loggedin = true
+  // }
+  //}
+  //
+
     const classes = useStyles();
   
     const [currentPage, setCurrentPage] = useState('About');
