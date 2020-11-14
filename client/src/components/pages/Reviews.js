@@ -79,6 +79,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const reviews = [
+  {
+    reviewText: "This is a great subscription box service!",
+    author: "Bill"
+  },
+  {
+    reviewText: "I too like to code and drink coffee. So this service is great!",
+    author: "Ted"
+  }
+];
+
 export default function Pricing() {
   const classes = useStyles();
   const [reviewText, setText] = useState('');
@@ -87,8 +98,8 @@ export default function Pricing() {
     setText(e.target.value);
   };
 
-  function submitReview(e) {
-    e.preventDefault();
+  const submitReview = async event => {
+    event.preventDefault();
     console.log(reviewText);
 
     setText('');
@@ -117,6 +128,7 @@ export default function Pricing() {
                 style={{margin: 8}}
             >
             <List>
+              {reviews.map(review => (
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
@@ -125,44 +137,14 @@ export default function Pricing() {
                     </ListItemAvatar>
                     <ListItemText>
                         <Typography variant="h5"  align="left">
-                             This is the greatest subscription box service of all time!
+                          {review.reviewText}
                         </Typography>
                         <Typography variant="h6"  align="right">
-                            -Anonymous
+                            -{review.author}
                         </Typography>
                     </ListItemText>
                 </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <LocalCafeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText>
-                        <Typography variant="h5"  align="left">
-                             This is another review of the greatest subscription box service of all time!
-                        </Typography>
-                        <Typography variant="h6"  align="right">
-                            -Anonymous
-                        </Typography>
-                    </ListItemText>
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <LocalCafeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText>
-                        <Typography variant="h5"  align="left">
-                             This is an extremely LONG review! I want everyone to know just how amazing this product is!
-                             I also want to test to see what this looks like with long text!
-                        </Typography>
-                        <Typography variant="h6"  align="right">
-                            -Anonymous
-                        </Typography>
-                    </ListItemText>
-                </ListItem>
+              ))}
             </List>  
                 
                 
