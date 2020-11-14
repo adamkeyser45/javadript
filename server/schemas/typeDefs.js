@@ -5,6 +5,7 @@ const typeDefs = gql`
   type Query {
     githubLoginUrl: String!
     users: [User]
+    authorizeWithGithub(code: String!): AuthPayload!
   }
 
   type Review {
@@ -20,13 +21,15 @@ const typeDefs = gql`
     reviews: [Review]
   }
 
+  type AuthPayload {
+    githubToken: String!
+    user: User!
+  }
+
   type Mutation {
     removeUser(githubId: String!): User
+    authorizeWithGithub(code: String!): AuthPayload!
   }
 
 `
-
-  
-
-
 module.exports = typeDefs;
