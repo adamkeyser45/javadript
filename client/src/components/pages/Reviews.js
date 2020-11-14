@@ -81,11 +81,11 @@ const useStyles = makeStyles((theme) => ({
 
 const reviews = [
   {
-    reviewText: "This is a great subscription box service!",
+    review: "This is a great subscription box service!",
     author: "Bill"
   },
   {
-    reviewText: "I too like to code and drink coffee. So this service is great!",
+    review: "I too like to code and drink coffee. So this service is great!",
     author: "Ted"
   }
 ];
@@ -101,6 +101,13 @@ export default function Pricing() {
   const submitReview = async event => {
     event.preventDefault();
     console.log(reviewText);
+
+    reviews.push(
+      {
+        review: reviewText,
+        author: "Anonymous" 
+      }
+    );
 
     setText('');
   };
@@ -122,7 +129,7 @@ export default function Pricing() {
         {/* End hero unit */}
 
         {/*Displayed Reviews*/}
-        <Container maxWidth="md" component="main" alignItems="center">
+        <Container maxWidth="md" component="main" alignitems="center">
             <Paper 
                 elevation={5}
                 style={{margin: 8}}
@@ -137,7 +144,7 @@ export default function Pricing() {
                     </ListItemAvatar>
                     <ListItemText>
                         <Typography variant="h5"  align="left">
-                          {review.reviewText}
+                          {review.review}
                         </Typography>
                         <Typography variant="h6"  align="right">
                             -{review.author}
@@ -146,15 +153,13 @@ export default function Pricing() {
                 </ListItem>
               ))}
             </List>  
-                
-                
             </Paper>            
         </Container>
         {/*End Displayed Reviews*/}
 
         <br></br>
         {/* Review Form */}
-        <Container maxWidth="md" component="main" alignItems="center">
+        <Container maxWidth="md" component="main" alignitems="center">
             <TextField
                 id="outlined-full-width"
                 label="Leave Your Own Review"
