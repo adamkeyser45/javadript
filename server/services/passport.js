@@ -33,7 +33,7 @@ passport.use(
           done(null, existingUser);
         } else {
           // we don't have a user record with this ID, make a new record
-          new User({ githubId: profile.id })
+          new User({ githubId: profile.id, displayName: profile.displayName })
             .save()
             .then((user) => done(null, user));
         }

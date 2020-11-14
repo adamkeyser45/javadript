@@ -20,6 +20,10 @@ const typeDefs = gql`
     reviews: [Review]
   }
 
+  type Mutation {
+    removeUser(githubId: String!): User
+  }
+
 `
 
   

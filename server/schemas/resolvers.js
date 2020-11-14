@@ -10,6 +10,11 @@ const resolvers = {
         users: async () => {
           return User.find()
         }
+    },
+    Mutation: {
+      removeUser: async (parent, args) => {
+        await User.findOneAndDelete(args);
       }
+    }
 };
 module.exports = resolvers;
