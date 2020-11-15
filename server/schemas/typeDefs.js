@@ -2,12 +2,6 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   
-  type Query {
-    githubLoginUrl: String!
-    users: [User]
-    authorizeWithGithub(code: String!): AuthPayload!
-    me: User
-  }
 
   type Review {
     _id: ID
@@ -17,17 +11,32 @@ const typeDefs = gql`
 
   type User {
     _id: ID
+    firstName: String
+    lastName: String
+    email: String
     githubId: String
     displayName: String
     reviews: [Review]
   }
-
+  type Auth {
+    token: ID
+    user: User
+  }
   type AuthPayload {
     githubToken: String!
     user: User!
   }
+  type Query {
+    me: User
+    users: [User]
+    user(username: String!): User
+    githubLoginUrl: String!
+    authorizeWithGithub(code: String!): AuthPayload!
+  }
 
   type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     removeUser(githubId: String!): User
     authorizeWithGithub(code: String!): AuthPayload!
   }
