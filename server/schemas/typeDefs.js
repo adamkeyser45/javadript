@@ -14,8 +14,6 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    githubId: String
-    displayName: String
     reviews: [Review]
   }
   type Auth {
@@ -29,14 +27,14 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(username: String!): User
+    user(email: String!): User
     githubLoginUrl: String!
     authorizeWithGithub(code: String!): AuthPayload!
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(lastName:String!, firstName:String!, email: String!, password: String!): Auth
     removeUser(githubId: String!): User
     authorizeWithGithub(code: String!): AuthPayload!
   }
