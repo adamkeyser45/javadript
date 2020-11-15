@@ -3,7 +3,6 @@ const { ApolloServer } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const path = require("path");
-const cookieSession = require("cookie-session");
 const passport = require("passport");
 require("./models/User");
 require("./services/passport");
@@ -25,13 +24,6 @@ server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey],
-  })
-);
 
 // passport initialize
 app.use(passport.initialize());
