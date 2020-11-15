@@ -8,7 +8,6 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import GitHubIcon from '@material-ui/icons/GitHub';
 import TextField from '@material-ui/core/TextField';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
