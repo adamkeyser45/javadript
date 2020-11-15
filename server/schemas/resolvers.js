@@ -33,9 +33,9 @@ const resolvers = {
     addUser: async (parent, args) => {
       //Here, the Mongoose User model creates a new user in the database with whatever is passed in as the args.
       const user = await User.create(args);
-      const token = signToken(user);
+      // const token = signToken(user);
 
-      return { token, user };
+      return user;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
