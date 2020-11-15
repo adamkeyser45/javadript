@@ -6,8 +6,8 @@ let currentUser;
 
 const resolvers = {
   Query: {
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    user: async (parent, { email }) => {
+      return User.findOne({ email })
         .select('-__v -password')
         .populate('reviews');
     },
