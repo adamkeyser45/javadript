@@ -1,6 +1,7 @@
 const { User, Review } = require("../models");
 const keys = require("../config/keys");
 const { requestGithubUser } = require("../utils/helpers");
+let currentUser;
 
 const resolvers = {
     Query: {
@@ -10,7 +11,8 @@ const resolvers = {
           }&scope=user`,
         users: async () => {
           return User.find()
-        }
+        },
+        me: () => currentUser,
     },
     Mutation: {
       removeUser: async (parent, args) => {

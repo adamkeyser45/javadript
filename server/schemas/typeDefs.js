@@ -6,6 +6,7 @@ const typeDefs = gql`
     githubLoginUrl: String!
     users: [User]
     authorizeWithGithub(code: String!): AuthPayload!
+    me: User
   }
 
   type Review {

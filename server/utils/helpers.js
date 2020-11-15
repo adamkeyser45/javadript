@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-let currentUser;
 
 const requestGithubToken = credentials =>
   fetch("https://github.com/login/oauth/access_token", {
