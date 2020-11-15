@@ -8,7 +8,8 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import TextField from '@material-ui/core/TextField';
+import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
 function Copyright() {
   return (
@@ -64,11 +65,45 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <GitHubIcon />
+            <LocalCafeIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+
+          <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+        </form>
 
             <Button
               type="button"
@@ -76,16 +111,10 @@ export default function SignInSide() {
               variant="contained"
               color="secondary"
               className={classes.submit}
-              href="http://localhost:3001/auth/github"
+              href="" // http://localhost:3001/auth/github
             >
-              Sign In with Github
+              Coming Soon! Sign In with Github!
             </Button>
-
-            <Typography align="center" variant="subtitle2">
-              <Link href="https://www.github.com" >
-                {"Don't have an account? Sign Up on GitHub!"}
-              </Link>
-            </Typography>
 
             <Box mt={5}>
               <Copyright />

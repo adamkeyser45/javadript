@@ -20,7 +20,7 @@ import About from '../pages/About'
 import Pricing from '../pages/Pricing';
 import SignInSide from '../pages/SignInSide';
 import Reviews from '../pages/Reviews';
-// import SignUp from '../pages/SignUp';
+import SignUp from '../pages/SignUp';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -69,18 +69,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav() {
 
-  // let loggedin = false  
-  
-  // const checkLogin = () => {
-  //   let loggedAccessToken = window.localStorage.getItem('token');
-  //   if (loggedAccessToken) {
-  //     loggedin = true;
-  //   } else {
-  //     loggedin = false;
-  //   }
-  // }
-  
-
     const classes = useStyles();
   
     const [currentPage, setCurrentPage] = useState('About');
@@ -91,6 +79,8 @@ export default function Nav() {
               return <Pricing />;
             case 'SignIn':
                 return <SignInSide />
+            case 'SignUp':
+              return <SignUp />
             case 'Reviews':
               return <Reviews />
             default:
@@ -117,10 +107,14 @@ export default function Nav() {
               <Link variant="button" color="textPrimary" href="#" className={classes.link} onClick={() => { setCurrentPage('Reviews') }}>
                 Reviews
               </Link>
-            </nav>
+            
             <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
               Login
             </Button>
+            <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignUp') }}>
+              Signup
+            </Button>
+            </nav>
           </Toolbar>
         </AppBar>
         {renderPage()}
