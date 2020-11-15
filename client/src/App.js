@@ -1,23 +1,25 @@
+import React from 'react';
+
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+
 import './App.css';
-// import Pricing from './components/pages/Pricing';
-// import SignInSide from './components/pages/SignInSide';
-// import SignUp from './components/pages/SignUp';
-// import About from './components/pages/About';
 import Nav from './components/Nav'
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3001/graphql'
+});
 
 function App() {
 
   return (
-    <div>
-      
-      {/* <Pricing></Pricing> */}
-      <Nav />
-      {/* <About /> */}
-      {/* <SignInSide></SignInSide> */}
-      {/* <SignUp></SignUp> */}
 
-      
-    </div>
+    <ApolloProvider client={client}>
+      <div>
+        <Nav /> 
+      </div>
+    </ApolloProvider>
+
   );
 }
 
