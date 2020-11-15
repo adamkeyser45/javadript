@@ -69,17 +69,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav() {
 
-  // const loggedin = false
-  // 
-  // checkLogin {
-  // get loggedAccessToken
-  // if (loggedAccessToken = null) {
-  //  loggedin = false
-  // } else {
-  //   loggedin = true
+  // let loggedin = false  
+  
+  // const checkLogin = () => {
+  //   let loggedAccessToken = window.localStorage.getItem('token');
+  //   if (loggedAccessToken) {
+  //     loggedin = true;
+  //   } else {
+  //     loggedin = false;
+  //   }
   // }
-  //}
-  //
+  
 
     const classes = useStyles();
   
@@ -101,6 +101,7 @@ export default function Nav() {
     return (
       <React.Fragment>
         <CssBaseline />
+        {/* {checkLogin()} */}
         <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
             <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
