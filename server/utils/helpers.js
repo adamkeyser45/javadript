@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 let currentUser;
 
 const requestGithubToken = credentials =>
@@ -25,4 +26,4 @@ const requestGithubUser = async credentials => {
     return { ...githubUser, access_token };
 };
 
-module.export = { requestGithubUser };
+module.exports = { requestGithubUser };
