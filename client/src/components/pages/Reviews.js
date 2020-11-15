@@ -17,6 +17,8 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import Auth from '../../utils/auth';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_ME, QUERY_REVIEWS } from '../../utils/queries';
 
 function Copyright() {
 
@@ -77,21 +79,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const reviews = [
-  {
-    review: "This is a great subscription box service!",
-    author: "Bill"
-  },
-  {
-    review: "I too like to code and drink coffee. So this service is great!",
-    author: "Ted"
-  }
-];
-
 export default function Review() {
   const loggedIn = Auth.loggedIn();
   const classes = useStyles();
   const [reviewText, setText] = useState('');
+
+  const { loading, data } = useQuery(QUERY_REVIEWS);
+  const reviews = data?.reviews || [];
+
+  const { data: userData } = useQuery(QUERY_ME);
 
   function handleChange(e) {
     setText(e.target.value);
@@ -128,6 +124,9 @@ export default function Review() {
         {/* End hero unit */}
 
         {/*Displayed Reviews*/}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
         <Container maxWidth="md" component="main" alignitems="center">
             <Paper 
                 elevation={5}
@@ -154,6 +153,7 @@ export default function Review() {
             </List>  
             </Paper>            
         </Container>
+        )}
         {/*End Displayed Reviews*/}
 
         <br></br>
