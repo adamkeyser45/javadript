@@ -40,7 +40,7 @@ passport.use(
       });
     
       // store access token to localstorage as loggedAccessToken
-    
+      // window.localStorage.setItem('token', JSON.stringify(accessToken));
     
     }
   )
