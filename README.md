@@ -11,6 +11,11 @@ We created this application with the help of React and GraphQl, making sure to f
 
 ## Screenshots
 
+<img width="1427" alt="Screen Shot 2020-11-15 at 4 12 35 PM" src="https://user-images.githubusercontent.com/65985044/99198390-e6a5cf00-275d-11eb-84e4-072fa2d1dff8.png">
+<img width="1428" alt="Screen Shot 2020-11-15 at 4 12 51 PM" src="https://user-images.githubusercontent.com/65985044/99198394-f02f3700-275d-11eb-99dd-d022206bc8dc.png">
+<img width="1427" alt="Screen Shot 2020-11-15 at 4 13 02 PM" src="https://user-images.githubusercontent.com/65985044/99198396-f6bdae80-275d-11eb-8bbe-0118d0524fe7.png">
+<img width="1423" alt="Screen Shot 2020-11-15 at 4 13 13 PM" src="https://user-images.githubusercontent.com/65985044/99198398-f9b89f00-275d-11eb-9424-101f0fd23d3c.png">
+<img width="1426" alt="Screen Shot 2020-11-15 at 4 13 22 PM" src="https://user-images.githubusercontent.com/65985044/99198402-ffae8000-275d-11eb-8f74-14cd7937c04d.png">
 
 ## Table of Contents
   - [Description](#description)
