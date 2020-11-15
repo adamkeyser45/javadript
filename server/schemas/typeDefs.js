@@ -25,6 +25,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    reviews: [Review]
     user(email: String!): User
     githubLoginUrl: String!
     authorizeWithGithub(code: String!): AuthPayload!

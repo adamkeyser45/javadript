@@ -28,6 +28,9 @@ const resolvers = {
     users: async () => {
       return User.find()
     },
+    reviews: async () => {
+      return Review.find()
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ email: context.user.email })

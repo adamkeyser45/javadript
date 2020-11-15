@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 import '../../assets/style.css';
 import Button from '@material-ui/core/Button';
-
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
-
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
+import Auth from '../../utils/auth';
 
 function Copyright() {
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -90,7 +88,8 @@ const reviews = [
   }
 ];
 
-export default function Pricing() {
+export default function Review() {
+  const loggedIn = Auth.loggedIn();
   const classes = useStyles();
   const [reviewText, setText] = useState('');
 
@@ -159,6 +158,8 @@ export default function Pricing() {
 
         <br></br>
         {/* Review Form */}
+
+        {loggedIn && (
         <Container maxWidth="md" component="main" alignitems="center">
             <TextField
                 id="outlined-full-width"
@@ -178,7 +179,9 @@ export default function Pricing() {
             <Button variant="contained" color="primary" style={{ margin: 8 }} onClick={submitReview}>
                 Leave a Review
             </Button>
-        </Container>
+        </Container>          
+        )}
+
         {/* End Review Form */}
 
         {/* Footer */}
