@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/adamkeyser45/javadript#readme",
   "devDependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "webpack-pwa-manifest": "^4.2.0"
   },
   "dependencies": {
     "if-env": "^1.0.4"
