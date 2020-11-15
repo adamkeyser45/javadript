@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Grid from '@material-ui/core/Grid';
-// import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-// import Container from '@material-ui/core/Container';
-// import Box from '@material-ui/core/Box';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 
 import About from '../pages/About'
@@ -21,6 +13,8 @@ import Pricing from '../pages/Pricing';
 import SignInSide from '../pages/SignInSide';
 import Reviews from '../pages/Reviews';
 import SignUp from '../pages/SignUp';
+
+import Auth from '../../utils/auth';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -68,25 +62,29 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function Nav() {
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
-    const classes = useStyles();
+  const classes = useStyles();
+
+  const [currentPage, setCurrentPage] = useState('About');
   
-    const [currentPage, setCurrentPage] = useState('About');
-  
-    const renderPage = () => {
-        switch (currentPage) {
-            case 'Pricing':
-              return <Pricing />;
-            case 'SignIn':
-                return <SignInSide />
-            case 'SignUp':
-              return <SignUp />
-            case 'Reviews':
-              return <Reviews />
-            default:
-              return <About />;
-        }
-    };
+  const renderPage = () => {
+      switch (currentPage) {
+          case 'Pricing':
+            return <Pricing />;
+          case 'SignIn':
+              return <SignInSide />
+          case 'SignUp':
+            return <SignUp />
+          case 'Reviews':
+            return <Reviews />
+          default:
+            return <About />;
+      }
+  };
   
     return (
       <React.Fragment>
@@ -108,12 +106,27 @@ export default function Nav() {
                 Reviews
               </Link>
             
-            <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
-              Login
-            </Button>
-            <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignUp') }}>
-              Signup
-            </Button>
+
+            {Auth.loggedIn() ? (
+              <>
+                <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={logout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignIn') }}>
+                  Login
+                </Button>
+                <Button href="#" color="primary" variant="outlined" className={classes.link} onClick={() => { setCurrentPage('SignUp') }}>
+                  Signup
+                </Button>
+              </>
+            )}
+
+
+
+
             </nav>
           </Toolbar>
         </AppBar>
