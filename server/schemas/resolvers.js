@@ -2,6 +2,7 @@ const { User, Review } = require("../models");
 const keys = require("../config/keys");
 const { signToken } = require('../utils/auth');
 const { requestGithubUser } = require("../utils/helpers");
+const { AuthenticationError } = require('apollo-server-express');
 let currentUser;
 
 const resolvers = {
@@ -27,7 +28,16 @@ const resolvers = {
     users: async () => {
       return User.find()
     },
-    me: () => currentUser,
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ email: context.user.email })
+          .select('-__v -password');
+    
+        return userData;
+      }
+    
+      throw new AuthenticationError('Not logged in');
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -49,7 +59,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
+    addReview: async (parent, args, context) => {
+      if (context.user) {
+        const review = await Review.create({ ...args, author: context.user.firstName });
+    
+        await User.findOneAndUpdate(
+          { email: context.user.email },
+          { $push: { reviews: review._id } },
+          { new: true }
+        );
+    
+        return review;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
     removeUser: async (parent, args) => {
       await User.findOneAndDelete(args);
     },

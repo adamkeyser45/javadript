@@ -8,8 +8,7 @@ const reviewSchema = new Schema(
             minlength: 1
         },
         author: {
-            type: String,
-            required: true
+            type: String
         }
     },
     {
