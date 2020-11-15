@@ -2,6 +2,7 @@ const { User, Review } = require("../models");
 const keys = require("../config/keys");
 const { signToken } = require('../utils/auth');
 const { requestGithubUser } = require("../utils/helpers");
+const { AuthenticationError } = require('apollo-server-express');
 let currentUser;
 
 const resolvers = {
@@ -46,8 +47,8 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      const token = signToken(user);
-      return { token, user };
+      // const token = signToken(user);
+      return user;
     },
 
     removeUser: async (parent, args) => {
