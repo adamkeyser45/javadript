@@ -1,9 +1,8 @@
 const passport = require("passport");
-const GitHubStrategy = require('passport-github2').Strategy;
+const GitHubStrategy = require("passport-github2").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model("users");
-
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -15,13 +14,13 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-
 // Github strategy
 passport.use(
-  new GitHubStrategy({
+  new GitHubStrategy(
+    {
       clientID: keys.githubClientId,
       clientSecret: keys.githubClientSecret,
-      callbackURL: "http://localhost:3001/auth/github/callback"
+      callbackURL: "http://localhost:3001/auth/github/callback",
     },
     (accessToken, refreshToken, profile, done) => {
       console.log("access token", accessToken);
@@ -38,14 +37,6 @@ passport.use(
             .then((user) => done(null, user));
         }
       });
-    
-      // store access token to localstorage as loggedAccessToken
-      // window.localStorage.setItem('token', JSON.stringify(accessToken));
-    
     }
   )
 );
-
-
-
-
