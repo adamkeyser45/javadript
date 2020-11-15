@@ -59,7 +59,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
+    addReview: async (parent, args, context) => {
+      if (context.user) {
+        const review = await Review.create({ ...args, author: context.user.firstName });
+    
+        await User.findOneAndUpdate(
+          { email: context.user.email },
+          { $push: { reviews: review._id } },
+          { new: true }
+        );
+    
+        return review;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
     removeUser: async (parent, args) => {
       await User.findOneAndDelete(args);
     },
