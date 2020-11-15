@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,6 +10,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
+
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 function Copyright() {
   return (
@@ -58,6 +62,40 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
 
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    
+    try {
+      const { data } = await login({
+        variables: { ...formState }
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e)
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -71,7 +109,7 @@ export default function SignInSide() {
             Sign in
           </Typography>
 
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -82,6 +120,8 @@ export default function SignInSide() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={formState.email}
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -93,6 +133,8 @@ export default function SignInSide() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={formState.password}
+            onChange={handleChange}
           />
           <Button
             type="submit"
@@ -104,7 +146,7 @@ export default function SignInSide() {
             Sign In
           </Button>
         </form>
-
+        {error && <div>Login failed</div>}
             <Button
               type="button"
               fullWidth
