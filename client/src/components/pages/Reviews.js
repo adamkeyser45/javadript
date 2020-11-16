@@ -18,7 +18,7 @@ import Box from '@material-ui/core/Box';
 
 import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { QUERY_ME, QUERY_REVIEWS } from '../../utils/queries';
+import { QUERY_REVIEWS } from '../../utils/queries';
 import { ADD_REVIEW } from '../../utils/mutations';
 
 function Copyright() {
@@ -109,7 +109,7 @@ export default function Review() {
     };
   };
 
-  const [addReview, { error }] = useMutation(ADD_REVIEW, {
+  const [addReview] = useMutation(ADD_REVIEW, {
     update(cache, { data: { addReview } }) {
       try {
         const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
