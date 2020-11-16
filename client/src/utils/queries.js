@@ -8,7 +8,6 @@ export const QUERY_ME = gql`
             lastName
             email
             reviews {
-                _id
                 review
                 author
             }

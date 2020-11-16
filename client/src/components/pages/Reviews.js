@@ -111,14 +111,24 @@ export default function Review() {
 
   const [addReview, { error }] = useMutation(ADD_REVIEW, {
     update(cache, { data: { addReview } }) {
-      // read what's currently in the cache
-      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
-  
-      // prepend the newest review to the front of the array
-      cache.writeQuery({
-        query: QUERY_REVIEWS,
-        data: { reviews: [addReview, ...reviews] }
-      });
+      try {
+        const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+        cache.writeQuery({
+          query: QUERY_REVIEWS,
+          data: { reviews: [addReview, ...reviews] }
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      
+      // update me object's cache, appending new review to the end of the array
+      // const { me } = cache.readQuery({ query: QUERY_REVIEWS });
+      // cache.writeQuery({
+      //   query: QUERY_REVIEWS,
+      //   data: { me: { ...me, reviews: [...me.reviews, addReview] } }
+      // });
+    
+
     }
   });
 
