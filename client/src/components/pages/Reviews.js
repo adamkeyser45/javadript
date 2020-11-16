@@ -17,8 +17,9 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import Auth from '../../utils/auth';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_ME, QUERY_REVIEWS } from '../../utils/queries';
+import { ADD_REVIEW } from '../../utils/mutations';
 
 function Copyright() {
 
@@ -87,7 +88,7 @@ export default function Review() {
   const { loading, data } = useQuery(QUERY_REVIEWS);
   const reviews = data?.reviews || [];
 
-  const { data: userData } = useQuery(QUERY_ME);
+  // const { data: userData } = useQuery(QUERY_ME);
 
   function handleChange(e) {
     setText(e.target.value);
@@ -97,15 +98,29 @@ export default function Review() {
     event.preventDefault();
     console.log(reviewText);
 
-    reviews.push(
-      {
-        review: reviewText,
-        author: "Anonymous" 
-      }
-    );
+    try {
+      await addReview({
+        variables: { review: reviewText }
+      });
 
-    setText('');
+      setText('');
+    } catch (e) {
+      console.error(e);
+    };
   };
+
+  const [addReview, { error }] = useMutation(ADD_REVIEW, {
+    update(cache, { data: { addReview } }) {
+      // read what's currently in the cache
+      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+  
+      // prepend the newest review to the front of the array
+      cache.writeQuery({
+        query: QUERY_REVIEWS,
+        data: { reviews: [addReview, ...reviews] }
+      });
+    }
+  });
 
   return (
     <React.Fragment>
