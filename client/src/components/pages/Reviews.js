@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import '../../assets/style.css';
 import Button from '@material-ui/core/Button';
-
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
-
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
+import Auth from '../../utils/auth';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_REVIEWS } from '../../utils/queries';
+import { ADD_REVIEW } from '../../utils/mutations';
 
 function Copyright() {
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -79,20 +80,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const reviews = [
-  {
-    review: "This is a great subscription box service!",
-    author: "Bill"
-  },
-  {
-    review: "I too like to code and drink coffee. So this service is great!",
-    author: "Ted"
-  }
-];
-
-export default function Pricing() {
+export default function Review() {
+  const loggedIn = Auth.loggedIn();
   const classes = useStyles();
   const [reviewText, setText] = useState('');
+
+  const { loading, data } = useQuery(QUERY_REVIEWS);
+  const reviews = data?.reviews || [];
+
+  // const { data: userData } = useQuery(QUERY_ME);
 
   function handleChange(e) {
     setText(e.target.value);
@@ -102,15 +98,39 @@ export default function Pricing() {
     event.preventDefault();
     console.log(reviewText);
 
-    reviews.push(
-      {
-        review: reviewText,
-        author: "Anonymous" 
-      }
-    );
+    try {
+      await addReview({
+        variables: { review: reviewText }
+      });
 
-    setText('');
+      setText('');
+    } catch (e) {
+      console.error(e);
+    };
   };
+
+  const [addReview] = useMutation(ADD_REVIEW, {
+    update(cache, { data: { addReview } }) {
+      try {
+        const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
+        cache.writeQuery({
+          query: QUERY_REVIEWS,
+          data: { reviews: [addReview, ...reviews] }
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      
+      // update me object's cache, appending new review to the end of the array
+      // const { me } = cache.readQuery({ query: QUERY_REVIEWS });
+      // cache.writeQuery({
+      //   query: QUERY_REVIEWS,
+      //   data: { me: { ...me, reviews: [...me.reviews, addReview] } }
+      // });
+    
+
+    }
+  });
 
   return (
     <React.Fragment>
@@ -129,6 +149,9 @@ export default function Pricing() {
         {/* End hero unit */}
 
         {/*Displayed Reviews*/}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
         <Container maxWidth="md" component="main" alignitems="center">
             <Paper 
                 elevation={5}
@@ -155,10 +178,13 @@ export default function Pricing() {
             </List>  
             </Paper>            
         </Container>
+        )}
         {/*End Displayed Reviews*/}
 
         <br></br>
         {/* Review Form */}
+
+        {loggedIn && (
         <Container maxWidth="md" component="main" alignitems="center">
             <TextField
                 id="outlined-full-width"
@@ -178,7 +204,9 @@ export default function Pricing() {
             <Button variant="contained" color="primary" style={{ margin: 8 }} onClick={submitReview}>
                 Leave a Review
             </Button>
-        </Container>
+        </Container>          
+        )}
+
         {/* End Review Form */}
 
         {/* Footer */}

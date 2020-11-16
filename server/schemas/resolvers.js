@@ -28,6 +28,9 @@ const resolvers = {
     users: async () => {
       return User.find()
     },
+    reviews: async () => {
+      return Review.find()
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ email: context.user.email })
@@ -72,7 +75,7 @@ const resolvers = {
         return review;
       }
     
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('You need to be logged in!!!');
     },
     removeUser: async (parent, args) => {
       await User.findOneAndDelete(args);

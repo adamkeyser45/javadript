@@ -20,6 +20,8 @@ import image1 from '../../assets/img/1.jpg';
 import image2 from '../../assets/img/2.jpg';
 import image3 from '../../assets/img/3.jpg';
 
+import Auth from '../../utils/auth';
+
 
 function Copyright() {
   return (
@@ -126,6 +128,8 @@ export default function Pricing() {
   function handleToken(token, addresses) {
     console.log({ token, addresses })
   }
+
+  const loggedIn = Auth.loggedIn();
   return (
 
     <React.Fragment>
@@ -180,16 +184,18 @@ export default function Pricing() {
                     </ul>
                   </CardContent>
                   <CardActions>
-                    <Button fullWidth >
-                      <StripeCheckout
-                        stripeKey="pk_test_51HkGuBK9umgCP47fXIZ8eEutibdMRaXXWPVkZJtk54CtM98DQ327WsyYiCEDsy1BxYgMfw7lj3bP8mBriEPUctrZ00Ri54t2gF"
-                        token={handleToken}
-                        billingAddress
-                        shippingAddress
-                        amount={product.price * 100}
-                        name={product.title}
-                      />
-                    </Button>
+                    {loggedIn && (
+                      <Button fullWidth >
+                        <StripeCheckout
+                          stripeKey="pk_test_51HkGuBK9umgCP47fXIZ8eEutibdMRaXXWPVkZJtk54CtM98DQ327WsyYiCEDsy1BxYgMfw7lj3bP8mBriEPUctrZ00Ri54t2gF"
+                          token={handleToken}
+                          billingAddress
+                          shippingAddress
+                          amount={product.price * 100}
+                          name={product.title}
+                        />
+                      </Button>
+                    )}
                   </CardActions>
                 </Card>
 
