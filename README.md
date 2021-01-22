@@ -9,6 +9,8 @@ Javadript is a subscription service application, allowing coders to fulfil their
 
 We created this application with the help of React and GraphQl, making sure to follow the most current practices with PWA. Users can create an account, login, and then order their subscription. 
 
+Link to deployed application: https://sleepy-garden-49427.herokuapp.com/#
+
 ## Screenshots
 
 <img width="1427" alt="Screen Shot 2020-11-15 at 4 12 35 PM" src="https://user-images.githubusercontent.com/65985044/99198390-e6a5cf00-275d-11eb-84e4-072fa2d1dff8.png">
